@@ -37,6 +37,10 @@ namespace Programing.Ex.Model
             {
                 return _quantity;
             }
+            set
+            {
+                _quantity = value;
+            }
         }
         public double Price
         { 
