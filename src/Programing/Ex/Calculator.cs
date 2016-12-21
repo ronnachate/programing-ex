@@ -8,6 +8,7 @@ namespace Programing.Ex
     {
         private static readonly int BUY_TYPE = 0;
         private static readonly int SALE_TYPE = 1;
+         private static readonly int FIRST_PRIME_NUMBER = 2;
 
         /// <summary>
         /// Get prime number
@@ -16,7 +17,7 @@ namespace Programing.Ex
         /// <returns>List of prime number</returns>
         public static List<int> GetPrimeNumber( int number) {
             var result =  new List<int>();
-            var primeNumber = 2;
+            var primeNumber = FIRST_PRIME_NUMBER;
             result.Add(primeNumber);
             while( result.Count < number ) {
                 primeNumber = GetNextPrime(primeNumber);
