@@ -15,8 +15,14 @@ namespace Programing.Ex
         /// <param name="number">number of prime number to return</param>
         /// <returns>List of prime number</returns>
         public static List<int> GetPrimeNumber( int number) {
-
-            return new List<int>();
+            var result =  new List<int>();
+            var primeNumber = 2;
+            result.Add(primeNumber);
+            while( result.Count < number ) {
+                primeNumber = GetNextPrime(primeNumber);
+                result.Add(primeNumber);
+            }
+            return result;
         }
 
         /// <summary>
@@ -26,7 +32,7 @@ namespace Programing.Ex
         /// <returns>profit</returns>
         public static double GetFifoProfit( List<Transaction> transactions)
         {
-            double profit = 0.0;  
+            double profit = 0.0;
             if( transactions.Count > 0 ) {
                 //get sale transaction
                 var saleTransactions = transactions.Where( t => t.Type == SALE_TYPE ).ToList();
@@ -42,7 +48,7 @@ namespace Programing.Ex
                         if( quantityLeft > 0 ) {
                             // sale quantity overflow from last buy trasaction
                             if( quantityLeft <= buyTransaction.Quantity ) {
-                                // buy transaction enought for overflow quantity 
+                                // buy transaction enought for overflow quantity
                                 profit += quantityLeft * ( transaction.Price - buyTransaction.Price );
                                 //update buyTransaction.Quantity
                                 buyTransaction.Quantity = buyTransaction.Quantity - quantityLeft;
@@ -52,7 +58,7 @@ namespace Programing.Ex
                                 //overflow to next buy trasaction
                                 profit += buyTransaction.Quantity * ( transaction.Price - buyTransaction.Price );
                                 quantityLeft = quantityLeft - buyTransaction.Quantity;
-                                transactions.Remove(buyTransaction);                      
+                                transactions.Remove(buyTransaction);
                             }
                         }
                         else {
@@ -78,6 +84,27 @@ namespace Programing.Ex
             else {
                 return 0;
             }
+        }
+
+        private static int GetNextPrime(int number) {
+            while(true) {
+                number++;
+                if( IsPrime(number) ) {
+                    return number;
+                }
+            }
+        }
+
+        private static bool IsPrime(int number) {
+
+            if (number == 1) return false;
+            //even number alway devide by 2, return false
+            if (number % 2 == 0) return false;
+            //only odd number
+            for (int i = 3; i < number; i += 2)  {
+                if (number % i == 0) return false;
+            }
+            return true;
         }
     }
 }

@@ -46,6 +46,7 @@ namespace Programing.Ex.Test
                 new Transaction(1,123,1,300.00),
                 new Transaction(1,124,1,200.00)
             });
+            //test overflow quantity
             Assert.Equal(550, Calculator.GetFifoProfit(transactions));
             transactions = new List<Transaction>( new Transaction[] {
                 new Transaction(0,123,1,50.00),
