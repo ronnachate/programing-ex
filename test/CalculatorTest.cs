@@ -31,8 +31,8 @@ namespace Programing.Ex.Test
                 new Transaction(0,124,2,100.00),
                 new Transaction(1,123,1,300.00),
                 new Transaction(1,124,1,200.00)
-            })
-            Assert.Equal(0, Calculator.GetFifoProfit(transactions));
+            });
+            Assert.Equal(650, Calculator.GetFifoProfit(transactions));
         }
     }
 }
