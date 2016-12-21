@@ -32,7 +32,6 @@ namespace Programing.Ex.Test
                 new Transaction(1,123,1,300.00),
                 new Transaction(1,124,1,200.00)
             });
-            //System.Console.WriteLine(Calculator.GetFifoProfit(transactions));
             Assert.Equal(650, Calculator.GetFifoProfit(transactions));
         }
 
@@ -47,8 +46,17 @@ namespace Programing.Ex.Test
                 new Transaction(1,123,1,300.00),
                 new Transaction(1,124,1,200.00)
             });
-            //System.Console.WriteLine(Calculator.GetFifoProfit(transactions));
             Assert.Equal(550, Calculator.GetFifoProfit(transactions));
+            transactions = new List<Transaction>( new Transaction[] {
+                new Transaction(0,123,1,50.00),
+                new Transaction(0,123,2,100.00),
+                new Transaction(0,123,3,150.00),
+                new Transaction(1,123,4,200.00),
+                new Transaction(0,124,2,100.00),
+                new Transaction(1,123,1,300.00),
+                new Transaction(1,124,1,200.00)
+            });
+            Assert.Equal(650, Calculator.GetFifoProfit(transactions));
         }
     }
 }
